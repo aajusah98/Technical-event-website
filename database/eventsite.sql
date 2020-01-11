@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2019 at 06:39 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Jan 11, 2020 at 10:31 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `csefest`
+-- Database: `eventsite`
 --
 
 -- --------------------------------------------------------
@@ -42,12 +42,9 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`event_id`, `event_title`, `event_price`, `participents`, `img_link`, `type_id`) VALUES
-(1, 'pubg', 50, 4, 'cs01.jpg', 2),
-(2, 'tech quiz', 50, 2, 'cs02.jpg', 1),
-(3, 'counter strike', 50, 1, 'cs03.jpg', 2),
-(4, 'pair programming', 50, 2, 'cs01.jpg', 1),
-(5, 'seminar', 50, 1, 'cs02.jpg', 3),
-(6, 'multiple choice', 50, 1, 'cs01.jpg', 4);
+(1, 'PUBG', 50, 0, '2.jpg', 3),
+(2, 'Counter Strike', 50, 0, '6.jpg', 2),
+(3, 'PUBG', 50, 0, '6.jpg', 4);
 
 -- --------------------------------------------------------
 
@@ -65,34 +62,42 @@ CREATE TABLE `event_type` (
 --
 
 INSERT INTO `event_type` (`type_id`, `type_title`) VALUES
-(1, 'Technical Events'),
-(2, 'Gaming Events'),
-(3, 'On Stage Events'),
-(4, 'Off Stage Events'),
-(5, 'new event Events');
+(1, 'TECHNICAL'),
+(3, 'HACKING'),
+(4, 'GAMING');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `participent`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `participent` (
-  `user_id` int(10) NOT NULL,
-  `fullname` varchar(100) NOT NULL,
-  `email` varchar(300) NOT NULL,
-  `password` varchar(300) NOT NULL,
-  `mobile` varchar(10) NOT NULL,
-  `college` varchar(300) NOT NULL,
-  `branch` varchar(11) NOT NULL
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `college` varchar(50) NOT NULL,
+  `coursetype` varchar(50) NOT NULL,
+  `event_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `participent`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `participent` (`user_id`, `fullname`, `email`, `password`, `mobile`, `college`, `branch`) VALUES
-(1, 'puneeth reddy', 'puneethreddy951@gmail.com', '25f9e794323b453885f5181f1b624d0b', '9535688928', 'RRCE', 'CSE');
+INSERT INTO `users` (`id`, `username`, `email`, `phone`, `college`, `coursetype`, `event_name`) VALUES
+(1, 's', '', '', '', '', ''),
+(2, 'Ajay', 'Ajaysah531@gmail.com', '9653818316', 'SGVU', 'ef', 'PUBG'),
+(3, 'MONET', 'monetjohnson2000@gmail.com', '9653818316', 'SURESH GYAN VIHAR UNIVERSITY', 'CS', 'Counter Strike'),
+(4, 'gagan', 'gagan@gmail.com', '45678', 'sdfg', 'CS', 'PUBG'),
+(5, 'Akash', 'Akah@123gmail.com', '9861857', 'SgVh', 'Bac', 'PUBG'),
+(6, 'gagan', 'gagan@gmail.com', '45678', 'sdfg', 'CS', 'PUBG'),
+(7, '', 'sd', '', '', '', 'PUBG'),
+(8, 'aja', 'ajas@gmail.com', '9115158', 'dfghj', 'fghjk', 'PUBG'),
+(9, 'rtggh', '112124@gfmail.com', '1234', 'qdwef', '1212', 'PUBG'),
+(10, 'ds', 'Ajaysah531@gmail.com', '1478158', 'sdfg', 'Jaipur', 'PUBG'),
+(11, 'Ajay', 'Ajaysah531@gmail.com', '9653818316', 'SURESH GYAN VIHAR UNIVERSITY', 'Jaipur', 'PUBG');
 
 --
 -- Indexes for dumped tables
@@ -111,10 +116,10 @@ ALTER TABLE `event_type`
   ADD PRIMARY KEY (`type_id`);
 
 --
--- Indexes for table `participent`
+-- Indexes for table `users`
 --
-ALTER TABLE `participent`
-  ADD PRIMARY KEY (`user_id`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -124,19 +129,19 @@ ALTER TABLE `participent`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `event_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `event_type`
 --
 ALTER TABLE `event_type`
-  MODIFY `type_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `type_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `participent`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `participent`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
